@@ -1,0 +1,15 @@
+.users{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  box-shadow: 0 0 35px #aaaaaa;
+  padding:10px;
+}
+
+img{
+  width:25.5%;
+  box-shadow: 10px 10px 25px #afa5a5;
+}
+img:hover{
+  cursor:pointer;
+}
