@@ -1,5 +1,5 @@
 .todo-list {
-    background-color: white;
+    background-color: rgba(252, 246, 246, 0.87);
     margin: auto;
     width: 50%;
     display: flex;
@@ -27,10 +27,10 @@
     padding: 30px 20px 0;
     width: 100%;
     border-bottom: 1px solid #cecece;
-    font-family: Roboto, sans-serif;
+    font-family: cursive;
     font-weight: 100;
     font-size: 15px;
-    color: #333333;
+    color: rgb(44, 14, 39);
 }
 
 input[type=checkbox] {
@@ -41,3 +41,13 @@ input[type=checkbox] {
 input[type=checkbox]:focus {
     outline: 0;
 }
+
+svg{
+    width:30px;
+    height:30px;
+}
+
+svg:hover{
+    cursor:pointer;
+}
+

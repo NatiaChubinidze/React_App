@@ -1,9 +1,12 @@
 import React from "react";
 import "./App.css";
-import User from "./User";
-import Todo from './Todo';
+import User from "./components/User";
+import Todo from './components/Todo';
 
 class App extends React.Component {
+  style={
+    backgroundImage:"linear-gradient(to right, rgba(224, 221, 224, 0.3),rgba(128, 41, 114, 0.144)"
+  }
   constructor() {
     super();
     this.state = {
@@ -12,6 +15,7 @@ class App extends React.Component {
       usersView:true
     };
     this.handleClick = this.handleClick.bind(this);
+    this.changeVisibility=this.changeVisibility.bind(this);
   }
   componentDidMount() {
     fetch("https://reqres.in/api/users?page=1")
@@ -23,24 +27,27 @@ class App extends React.Component {
   }
 
   handleClick(user) {
-    console.log("handelchange");
     this.setState({ currentUser: user, usersView:false });
-    console.log(this.state.usersView);
   }
+  changeVisibility(){
+    this.setState({usersView:true});
+  }
+
   render() {
-   
-    console.log("rendering...")
     const usersArr = this.state.users.map((user) => {
       return (
         <User key={user.id} currentUser={user} handleClick={this.handleClick} />
       );
     });
     return (
-      <div className="container">
-        <h1>ToDo App</h1>
+      <div className="container" style={this.state.usersView?null:this.style}>
+        <div className="d-flex text mb-2">
+        <h1 className="me-3">ToDo App</h1>
+        <h4 className="mt-2">Click users to see their to do lists</h4>
+        </div>
         <div className={this.state.usersView===true?"users":"d-none users"}>{usersArr}</div>
         <div className={this.state.usersView===true?"d-none":"d-block todo-list"}>
-        <Todo user={this.state.currentUser}/>
+        <Todo user={this.state.currentUser} changeVisibility={this.changeVisibility}/>
         </div>
       </div>
     );
